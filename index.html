@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OceanGuard 15-Screen Alpha Prototype</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell" aria-label="OceanGuard high fidelity alpha prototype">
+    <section class="phone no-nav" id="phoneFrame" aria-live="polite">
+      <div class="status-bar">
+        <span>9:41</span>
+        <span>5G WiFi 92%</span>
+      </div>
+
+      <header class="top-header" id="appHeader">
+        <button class="brand-button" data-screen="home" aria-label="Go home">
+          <span class="wave-logo" aria-hidden="true">≈</span>
+          <span>
+            <strong>OceanGuard</strong>
+            <small>SDG 14 Marine Conservation</small>
+          </span>
+        </button>
+        <button class="round-icon" data-screen="profile" aria-label="Open profile">👤</button>
+      </header>
+
+      <section class="screen active auth-screen" id="welcome" data-title="Welcome">
+        <div class="auth-hero">
+          <span class="big-logo">≈</span>
+          <h1>OceanGuard</h1>
+          <p>Smart waste reporting and pollution dashboard for local marine conservation in Malaysia.</p>
+        </div>
+        <div class="auth-actions">
+          <button class="primary-action" data-screen="login">Login</button>
+          <button class="secondary-action" data-screen="register">Create Account</button>
+          <button class="text-action" data-screen="home">Continue as Demo User</button>
+        </div>
+      </section>
+
+      <section class="screen auth-screen" id="login" data-title="Login">
+        <button class="back-link" data-screen="welcome">‹ Back</button>
+        <div class="screen-heading">
+          <span class="section-label">Secure access</span>
+          <h2>Login</h2>
+          <p>Access waste reports, AI scan history, and cleanup reminders.</p>
+        </div>
+        <form class="form-card">
+          <label>Email<input type="email" value="member@oceanguard.my"></label>
+          <label>Password<input type="password" value="oceanguard"></label>
+          <button type="button" class="primary-action" data-screen="home">Login to Dashboard</button>
+        </form>
+        <button class="text-action" data-screen="register">New volunteer? Register here</button>
+      </section>
+
+      <section class="screen auth-screen" id="register" data-title="Register">
+        <button class="back-link" data-screen="welcome">‹ Back</button>
+        <div class="screen-heading">
+          <span class="section-label">Volunteer onboarding</span>
+          <h2>Create Account</h2>
+          <p>Register for reporting, hotspot alerts, and cleanup events.</p>
+        </div>
+        <form class="form-card">
+          <label>Full name<input type="text" value="Ocean Volunteer"></label>
+          <label>Email<input type="email" value="volunteer@oceanguard.my"></label>
+          <label>Area<select><option>Port Klang</option><option>Penang Coast</option><option>Johor Straits</option></select></label>
+          <button type="button" class="primary-action" data-screen="home">Create Account</button>
+        </form>
+      </section>
+
+      <section class="screen" id="home" data-title="Home">
+        <div class="hero-panel">
+          <span class="location-chip">📍 Port Klang, Malaysia</span>
+          <h1>Smart Waste Reporting & Pollution Dashboard</h1>
+          <p>Report marine waste. Support local ocean conservation.</p>
+        </div>
+        <div class="feature-grid">
+          <button class="feature-card" data-screen="reportCapture"><span class="feature-icon green">📷</span><strong>Report Marine Waste</strong><small>Capture photo and GPS evidence.</small></button>
+          <button class="feature-card" data-screen="aiScan"><span class="feature-icon cyan">🤖</span><strong>AI Waste Identification</strong><small>Scan and classify uploaded waste.</small></button>
+          <button class="feature-card" data-screen="heatmap"><span class="feature-icon blue">📍</span><strong>Pollution Heatmap</strong><small>View local hotspot data.</small></button>
+          <button class="feature-card" data-screen="eventsList"><span class="feature-icon purple">🗓️</span><strong>Cleanup Events</strong><small>Join local volunteer actions.</small></button>
+        </div>
+        <button class="primary-action" data-screen="reportCapture">Start Waste Report ›</button>
+        <button class="secondary-action" data-screen="impact">View Community Impact</button>
+      </section>
+
+      <section class="screen" id="reportCapture" data-title="Report Capture">
+        <div class="screen-heading">
+          <span class="section-label">Screen 5 · Camera API</span>
+          <h2>Capture Waste Photo</h2>
+          <p>Take or upload a photo of marine waste at the beach.</p>
+        </div>
+        <article class="upload-card">
+          <div class="photo-preview" id="photoPreview">
+            <span class="camera-mark">📷</span>
+            <strong>Photo preview area</strong>
+            <small>No marine waste photo captured yet.</small>
+          </div>
+          <button class="secondary-action" id="captureBtn">Capture / Upload Photo</button>
+          <!-- Camera API would capture the marine waste photo using getUserMedia or file input. -->
+        </article>
+        <article class="info-card gps-card">
+          <div><span class="section-label">GPS status</span><strong>Location detected: Port Klang Beach</strong><small>Coordinates are simulated for this alpha prototype.</small></div>
+          <div class="map-pin">📍</div>
+          <!-- Geolocation API would retrieve current GPS coordinates here. -->
+        </article>
+        <button class="primary-action" data-screen="reportDetails">Continue to Details</button>
+      </section>
+
+      <section class="screen" id="reportDetails" data-title="Report Details">
+        <div class="screen-heading">
+          <span class="section-label">Screen 6 · Report form</span>
+          <h2>Report Details</h2>
+          <p>Confirm waste type, severity, and field notes before upload.</p>
+        </div>
+        <form class="form-card">
+          <label>Waste type<select><option>Plastic Bottle</option><option>Plastic Bag</option><option>Food Packaging</option><option>Fishing Net</option><option>Other</option></select></label>
+          <label>Severity<select><option>Medium</option><option>Low</option><option>High</option></select></label>
+          <label>Notes<textarea>Plastic bottle cluster found near shoreline.</textarea></label>
+        </form>
+        <div class="tag-row"><span>Photo attached</span><span>GPS attached</span><span>Ready</span></div>
+        <button class="primary-action" data-screen="uploadStatus">Upload Report</button>
+      </section>
+
+      <section class="screen" id="uploadStatus" data-title="Upload Status">
+        <div class="screen-heading">
+          <span class="section-label">Screen 7 · Cloud Storage</span>
+          <h2>Uploading to Cloud</h2>
+          <p>Visual and audio feedback confirms upload progress.</p>
+        </div>
+        <article class="info-card upload-status-card">
+          <div class="cloud-icon">☁️</div>
+          <div class="row-between"><strong>Uploading to Cloud...</strong><span id="uploadPercent">0%</span></div>
+          <div class="progress-track"><span id="uploadFill"></span></div>
+          <small id="uploadStatusText">Ready to upload report and photo.</small>
+          <!-- Firebase / Cloud Storage would store the report record and photo here. -->
+          <!-- Web Audio API provides success sound feedback when upload completes. -->
+        </article>
+        <button class="primary-action" id="uploadBtn">Start Upload</button>
+        <p class="success-message" id="uploadSuccess">Report uploaded successfully.</p>
+        <button class="secondary-action hidden" id="continueAiBtn">Continue to AI Identification</button>
+      </section>
+
+      <section class="screen" id="aiScan" data-title="AI Scan">
+        <div class="screen-heading">
+          <span class="section-label">Screen 8 · AI Image Recognition</span>
+          <h2>AI Waste Identification</h2>
+          <p>Scan the uploaded image and show a confidence result.</p>
+        </div>
+        <div class="scanner-card" id="scannerCard">
+          <div class="scan-target"><span>🧴</span><div class="scan-line"></div></div>
+          <p id="scanStatus">Ready to scan uploaded marine waste image.</p>
+          <!-- AI Image Recognition API would classify the uploaded waste image here. -->
+        </div>
+        <button class="primary-action" id="startScanBtn">Start AI Scan</button>
+        <article class="result-card hidden" id="aiResult">
+          <span class="section-label">Detected result</span>
+          <h3>Plastic Bottle Detected</h3>
+          <p>Confidence: <strong>87%</strong></p>
+          <div class="progress-track confidence"><span></span></div>
+          <p>Estimated decomposition time: <strong>450 years</strong></p>
+          <p>Suggested action: Recycle or report for cleanup.</p>
+          <small class="warning-note">If confidence is below 60%, please confirm manually.</small>
+        </article>
+        <div class="button-stack">
+          <button class="secondary-action" id="voiceGuideBtn">Play AI Voice Guide</button>
+          <button class="secondary-action" data-screen="manualCategory">Manually Edit Category</button>
+          <!-- Web Speech API provides voice guide. Web Audio API provides warning and confirmation sounds. -->
+        </div>
+      </section>
+
+      <section class="screen" id="manualCategory" data-title="Manual Category">
+        <div class="screen-heading">
+          <span class="section-label">Screen 9 · Error prevention</span>
+          <h2>Manual Category Confirmation</h2>
+          <p>If AI confidence is low, users can correct the category.</p>
+        </div>
+        <form class="form-card">
+          <label>Confirmed category<select id="categorySelect"><option>Plastic Bottle</option><option>Plastic Bag</option><option>Food Packaging</option><option>Fishing Net</option><option>Other</option></select></label>
+          <label>Reason<select><option>AI confidence below 60%</option><option>User spotted different item</option><option>Image is unclear</option></select></label>
+        </form>
+        <article class="warning-card">⚠️ If confidence is below 60%, please confirm manually.</article>
+        <button class="primary-action" id="confirmCategoryBtn">Confirm Category</button>
+      </section>
+
+      <section class="screen" id="heatmap" data-title="Heatmap">
+        <div class="screen-heading">
+          <span class="section-label">Screen 10 · Map API</span>
+          <h2>Pollution Heatmap</h2>
+          <p>View local report density and hotspot severity.</p>
+        </div>
+        <div class="heatmap-card">
+          <div class="heat-blob hot"></div><div class="heat-blob medium"></div><div class="heat-blob low"></div><div class="coast-line"></div>
+          <button class="marker one" data-screen="hotspotDetail">📍</button><button class="marker two" data-screen="hotspotDetail">📍</button><button class="marker three" data-screen="hotspotDetail">📍</button>
+          <!-- Google Maps API / Mapbox API would render real map tiles, markers, and heatmap layers here. -->
+        </div>
+        <article class="info-card"><div class="row-between"><strong>Port Klang Beach</strong><span class="risk high">High</span></div><small>42 reports this week · plastic bottles and food packaging most common.</small></article>
+        <button class="primary-action" data-screen="hotspotDetail">View Hotspot Detail</button>
+      </section>
+
+      <section class="screen" id="hotspotDetail" data-title="Hotspot Detail">
+        <button class="back-link" data-screen="heatmap">‹ Back to Map</button>
+        <div class="screen-heading">
+          <span class="section-label">Screen 11 · Hotspot detail</span>
+          <h2>Port Klang Hotspot</h2>
+          <p>Detailed report breakdown for local conservation planning.</p>
+        </div>
+        <div class="stats-grid">
+          <div><strong>42</strong><small>Reports</small></div>
+          <div><strong>78%</strong><small>Risk</small></div>
+          <div><strong>18kg</strong><small>Waste</small></div>
+        </div>
+        <article class="info-card"><strong>Top waste categories</strong><div class="bar-list"><span style="width:88%">Plastic bottles</span><span style="width:64%">Food packaging</span><span style="width:42%">Fishing net</span></div></article>
+        <button class="secondary-action" data-screen="eventsList">Find Cleanup Events Nearby</button>
+      </section>
+
+      <section class="screen" id="eventsList" data-title="Events">
+        <div class="screen-heading">
+          <span class="section-label">Screen 12 · Events</span>
+          <h2>Cleanup Events</h2>
+          <p>Join local cleanup events connected to hotspot data.</p>
+        </div>
+        <article class="event-card"><span class="event-date">SUN · 9:00 AM</span><h3>Beach Cleanup - Port Klang</h3><p>Remove plastic waste with local volunteers.</p><button class="primary-action" data-screen="eventDetail">View Event Detail</button></article>
+        <article class="info-card"><strong>Mangrove Microplastic Audit</strong><small>Saturday · 4:30 PM · Klang River mouth</small></article>
+      </section>
+
+      <section class="screen" id="eventDetail" data-title="Event Detail">
+        <button class="back-link" data-screen="eventsList">‹ Back to Events</button>
+        <div class="screen-heading">
+          <span class="section-label">Screen 13 · Push Notification</span>
+          <h2>Beach Cleanup - Port Klang</h2>
+          <p>Sunday, 9:00 AM · Port Klang Beach entrance</p>
+        </div>
+        <article class="info-card"><strong>Community target</strong><div class="mini-progress"><span style="width:68%"></span></div><small>204 / 300 kg marine waste collection target</small></article>
+        <article class="info-card"><div class="row-between"><strong>Reminder status</strong><span class="risk good" id="reminderStatus">Off</span></div><small>Enable a reminder before the cleanup starts.</small><!-- Push Notification API would request permission and send cleanup event reminders here. --></article>
+        <button class="primary-action" id="enableReminderBtn">Enable Reminder</button>
+      </section>
+
+      <section class="screen" id="impact" data-title="Impact">
+        <div class="screen-heading">
+          <span class="section-label">Screen 14 · Community dashboard</span>
+          <h2>Community Impact</h2>
+          <p>Track conservation progress from reports and cleanup events.</p>
+        </div>
+        <div class="stats-grid">
+          <div><strong>128</strong><small>Reports</small></div>
+          <div><strong>35.6kg</strong><small>Removed</small></div>
+          <div><strong>246</strong><small>Volunteers</small></div>
+        </div>
+        <article class="info-card"><strong>Monthly SDG 14 progress</strong><div class="progress-track"><span style="width:72%"></span></div><small>72% toward July reporting and cleanup goal.</small></article>
+        <button class="secondary-action" data-screen="home">Back to Home</button>
+      </section>
+
+      <section class="screen" id="profile" data-title="Profile">
+        <div class="screen-heading">
+          <span class="section-label">Screen 15 · Account settings</span>
+          <h2>Volunteer Profile</h2>
+          <p>Manage account, notification, and privacy preferences.</p>
+        </div>
+        <article class="profile-card"><div class="avatar">OV</div><div><strong>Ocean Volunteer</strong><small>Port Klang community member</small></div></article>
+        <form class="form-card">
+          <label>Notification preference<select><option>Cleanup reminders enabled</option><option>Hotspot alerts only</option><option>Off</option></select></label>
+          <label>Privacy<select><option>Share anonymous reports</option><option>Private reports only</option></select></label>
+        </form>
+        <button class="secondary-action" data-screen="welcome">Logout</button>
+      </section>
+
+      <nav class="bottom-nav" id="bottomNav" aria-label="Bottom navigation">
+        <button class="nav-item active" data-screen="home"><span>⌂</span><small>Home</small></button>
+        <button class="nav-item" data-screen="reportCapture"><span>▣</span><small>Report</small></button>
+        <button class="nav-item" data-screen="aiScan"><span>⌬</span><small>AI</small></button>
+        <button class="nav-item" data-screen="heatmap"><span>⌖</span><small>Map</small></button>
+        <button class="nav-item" data-screen="eventsList"><span>◷</span><small>Events</small></button>
+      </nav>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
