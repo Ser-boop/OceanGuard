@@ -38,14 +38,8 @@ Open `index.html` directly in a browser. No backend, database, or installation i
 
 | API / Technology | Prototype Function | OceanGuard Application |
 | --- | --- | --- |
-| Camera API | Simulated photo capture | Captures marine waste evidence |
-| Geolocation API | Simulated Port Klang location | Adds GPS coordinates to reports |
-| Firebase / Cloud Storage | Simulated upload progress | Stores report data and photo |
-| AI Image Recognition API | Simulated scan result | Classifies waste image |
 | Web Speech API | AI voice guide | Speaks AI result guidance |
 | Web Audio API | Success, warning, confirmation, and reminder sounds | Gives audio feedback |
-| Google Maps API / Mapbox API | Simulated map markers and heatmap | Shows pollution hotspots |
-| Push Notification API | Simulated reminder status | Sends cleanup event reminders |
 
 ## Visual and Audio Techniques
 
